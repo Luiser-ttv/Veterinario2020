@@ -34,5 +34,10 @@ namespace Veterinario2020
             
             
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            label6.Text = "La contraseña y/o usuario puede ser consultado en VentanaLogin.cs en la línea 23";
+        }
     }
 }
