@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Veterinario2020
 {
     public partial class VentanaLogin : Form
     {
-        
+        Conexion conexion = new Conexion();
+
         public VentanaLogin()
         {
             InitializeComponent();
@@ -20,24 +22,20 @@ namespace Veterinario2020
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Contains("fraxito") && textBox2.Text.Contains("babyyoda"))
+            if (conexion.loginUsuario(textBox1.Text, textBox2.Text))
             {
-                VentanaPrincipal ventana = new VentanaPrincipal(this);
-                ventana.Show();
                 this.Hide();
+                VentanaPrincipal v = new VentanaPrincipal(this);
+                v.Show();
             }
-            else 
+            else
             {
-                label4.Text = "Usuario o contraseña incorrecto por favor intentalo de nuevo";
+                MessageBox.Show("usuario o contraseña incorrectos");
             }
-            
-            
-            
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-            label6.Text = "La contraseña y/o usuario puede ser consultado en VentanaLogin.cs en la línea 23";
-        }
+
+
     }
 }
+
