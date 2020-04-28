@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCrypt.Net;
 
 namespace Veterinario2020
 {
@@ -14,6 +15,7 @@ namespace Veterinario2020
     {
 
         private VentanaPrincipal mainForm = null;
+
         public Usuario(Form callingForm)
         {
 
@@ -22,5 +24,10 @@ namespace Veterinario2020
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NuevoUsuario n = new NuevoUsuario(this);
+            n.Show();
+        }
     }
 }

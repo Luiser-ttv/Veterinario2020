@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Veterinario2020
 {
@@ -71,5 +72,63 @@ namespace Veterinario2020
                 return false;
             }
         }
+
+        public String insertaUsuario(String DNI, String Nombre, String pass)
+        {
+            try
+            {
+                conexion.Open();
+                MySqlCommand consulta =
+                    new MySqlCommand("INSERT INTO cuenta (ID, DNI, Nombre, pass) VALUES (NULL, @DNI, @Nombre, @pass)", conexion);
+                consulta.Parameters.AddWithValue("@DNI", DNI);
+                consulta.Parameters.AddWithValue("@Nombre", Nombre);
+                consulta.Parameters.AddWithValue("@pass", pass);
+
+                consulta.ExecuteNonQuery();
+
+                conexion.Close();
+                return "Usuario creado correctamente";
+
+            }
+            catch (MySqlException e)
+            {
+                return "error";
+            }
+        }
+
+        //public DataTable mascota()
+        //{
+        //    try
+        //    {
+        //        conexion.Open();
+        //        MySqlCommand consulta = new MySqlCommand("SELECT NumeroHistorialClinico NHC, Nombre_Mascota ", conexion);
+        //        MySqlDataReader result = consulta.ExecuteReader();
+        //        DataTable pets = new DataTable();
+        //        pets.Load(result);
+        //        conexion.Close();
+        //        return pets;
+        //    }
+        //    catch (MySqlException e)
+        //    {
+        //        throw e;
+        //    }
+        //}
+        //public DataTable getAllPets(string nombre)
+        //{
+        //    try
+        //    {
+        //        conexion.Open();
+        //        MySqlCommand consulta = new MySqlCommand("SELECT * FROM pacientes WHERE Nombre_Mascota like '" + nombre + "'", conexion);
+        //        MySqlDataReader result = consulta.ExecuteReader();
+        //        DataTable pets = new DataTable();
+        //        pets.Load(result);
+        //        conexion.Close();
+        //        return pets;
+        //    }
+        //    catch (MySqlException e)
+        //    {
+        //        throw e;
+        //    }
+        //}
     }
 }
