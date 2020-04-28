@@ -23,15 +23,18 @@ namespace Veterinario2020
             {
                 conexion.Open();
                 MySqlCommand consulta =
-                    new MySqlCommand("SELECT * FROM cuenta WHERE DNI = @DNI AND pass = @pass", conexion);
+                    new MySqlCommand("SELECT * FROM cuenta WHERE DNI = @DNI ", conexion);
                 consulta.Parameters.AddWithValue("@DNI", DNI);
-                consulta.Parameters.AddWithValue("@pass", pass);
                 MySqlDataReader resultado = consulta.ExecuteReader();
 
                 if (resultado.Read())
                 {
-                   
-                    return true;
+                    string passwordConHash = resultado.GetString("pass");
+                    if(BCrypt.Net.BCrypt.Verify(pass, passwordConHash))
+                    {
+                        return true;
+                    }
+
                 }
 
                 conexion.Close();
@@ -96,39 +99,31 @@ namespace Veterinario2020
             }
         }
 
-        //public DataTable mascota()
-        //{
-        //    try
-        //    {
-        //        conexion.Open();
-        //        MySqlCommand consulta = new MySqlCommand("SELECT NumeroHistorialClinico NHC, Nombre_Mascota ", conexion);
-        //        MySqlDataReader result = consulta.ExecuteReader();
-        //        DataTable pets = new DataTable();
-        //        pets.Load(result);
-        //        conexion.Close();
-        //        return pets;
-        //    }
-        //    catch (MySqlException e)
-        //    {
-        //        throw e;
-        //    }
-        //}
-        //public DataTable getAllPets(string nombre)
-        //{
-        //    try
-        //    {
-        //        conexion.Open();
-        //        MySqlCommand consulta = new MySqlCommand("SELECT * FROM pacientes WHERE Nombre_Mascota like '" + nombre + "'", conexion);
-        //        MySqlDataReader result = consulta.ExecuteReader();
-        //        DataTable pets = new DataTable();
-        //        pets.Load(result);
-        //        conexion.Close();
-        //        return pets;
-        //    }
-        //    catch (MySqlException e)
-        //    {
-        //        throw e;
-        //    }
-        //}
+       
+        public String insertaDatosUsuario(String Nombre, String Apellidos, String CP, String Calle, String Ciudad, String Provincia)
+        {
+            try
+            {
+                conexion.Open();
+                MySqlCommand consulta =
+                    new MySqlCommand("INSERT INTO usuario (Nombre, Apellidos, CP, Calle, Ciudad, Provincia) VALUES (@Nombre, @Apellidos, @CP, @Calle, @Ciudad, @Provincia   )", conexion);
+                consulta.Parameters.AddWithValue("@Nombre", Nombre);
+                consulta.Parameters.AddWithValue("@Apellidos", Apellidos);
+                consulta.Parameters.AddWithValue("@CP", CP);
+                consulta.Parameters.AddWithValue("@Calle", Calle);
+                consulta.Parameters.AddWithValue("@Ciudad", Ciudad);
+                consulta.Parameters.AddWithValue("@Provincia", Provincia);
+
+                consulta.ExecuteNonQuery();
+
+                conexion.Close();
+                return "Datos añadidos correctamente";
+
+            }
+            catch (MySqlException e)
+            {
+                return "error";
+            }
+        }
     }
 }

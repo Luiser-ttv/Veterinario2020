@@ -13,6 +13,7 @@ namespace Veterinario2020
 {
     public partial class Usuario : Form
     {
+        Conexion conexion = new Conexion();
 
         private VentanaPrincipal mainForm = null;
 
@@ -28,6 +29,12 @@ namespace Veterinario2020
         {
             NuevoUsuario n = new NuevoUsuario(this);
             n.Show();
+        }
+
+        private void insertaDatos_Click(object sender, EventArgs e)
+        {
+            
+            MessageBox.Show(conexion.insertaDatosUsuario(textBoxNom.Text, textBoxApellido.Text, textBoxCP.Text, textBoxCalle.Text, textBoxCiudad.Text, textBoxProv.Text));
         }
     }
 }

@@ -148,6 +148,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE.txt" />
+    <None Include="Resources\icons8_user_64px.png" />
+    <None Include="Resources\icons8_user_32px_1.png" />
+    <None Include="Resources\icons8_add_64px.png" />
+    <None Include="Resources\icons8_add_128px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

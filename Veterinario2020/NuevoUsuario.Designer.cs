@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoUsuario));
             this.insertaUsuario = new System.Windows.Forms.Button();
             this.DNI = new System.Windows.Forms.Label();
             this.Nombre = new System.Windows.Forms.Label();
@@ -107,6 +108,8 @@
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.DNI);
             this.Controls.Add(this.insertaUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "NuevoUsuario";
             this.Text = "NuevoUsuario";
             this.ResumeLayout(false);
