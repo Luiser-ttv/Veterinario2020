@@ -148,6 +148,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE.txt" />
+    <None Include="Resources\fondo.jpg" />
+    <None Include="Resources\icons8_wooden_massage_table_80px.png" />
+    <None Include="Resources\icons8_spa_flower_80px.png" />
+    <None Include="Resources\icons8_syringe_96px.png" />
+    <None Include="Resources\icons8_barber_chair_96px.png" />
+    <None Include="Resources\icons8_veterinarian_female_96px.png" />
     <None Include="Resources\icons8_user_64px.png" />
     <None Include="Resources\icons8_user_32px_1.png" />
     <None Include="Resources\icons8_add_64px.png" />

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Veterinario2020
 {
@@ -46,35 +47,26 @@ namespace Veterinario2020
             }
         }
 
-        public Boolean mascotas(String nombre, String edad, String dueño, String vacunado, String foto)
+
+        public DataTable buscaMascotasPorId(int id)
         {
             try
             {
                 conexion.Open();
-                MySqlCommand consulta =
-                    new MySqlCommand("SELECT * FROM mascota WHERE nombre = @nombre AND edad = @edad AND dueño = @dueño AND vacunado = @vacunado AND foto = @foto ", conexion);
-                consulta.Parameters.AddWithValue("@nombre", nombre);
-                consulta.Parameters.AddWithValue("@edad", edad);
-                consulta.Parameters.AddWithValue("@dueño", dueño);
-                consulta.Parameters.AddWithValue("@vacunado", vacunado);
-                consulta.Parameters.AddWithValue("@foto", foto);
-
+                MySqlCommand consulta = new MySqlCommand("SELECT * FROM mascota where id = '" + id + "'", conexion);
                 MySqlDataReader resultado = consulta.ExecuteReader();
-
-                if (resultado.Read())
-                {
-
-                    return true;
-                }
-
+                DataTable mascota = new DataTable();
+                mascota.Load(resultado);
                 conexion.Close();
-                return false;
+                return mascota;
             }
             catch (MySqlException e)
             {
-                return false;
+                throw e;
             }
         }
+
+        
 
         public String insertaUsuario(String DNI, String Nombre, String pass)
         {
@@ -118,6 +110,28 @@ namespace Veterinario2020
 
                 conexion.Close();
                 return "Datos añadidos correctamente";
+
+            }
+            catch (MySqlException e)
+            {
+                return "error";
+            }
+        }
+
+        public String insertaFecha(DateTime fecha_cita)
+        {
+            try
+            {
+                conexion.Open();
+                MySqlCommand consulta =
+                    new MySqlCommand("INSERT INTO citas (id, fecha_cita) VALUES (NULL, @fecha_cita)", conexion);
+                consulta.Parameters.AddWithValue("@fecha_cita", fecha_cita);
+               
+
+                consulta.ExecuteNonQuery();
+
+                conexion.Close();
+                return "Cita añadida correctamente";
 
             }
             catch (MySqlException e)
