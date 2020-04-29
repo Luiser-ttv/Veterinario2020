@@ -15,6 +15,7 @@ namespace Veterinario2020
     {
         Conexion conexion = new Conexion();
         DataTable mascota = new DataTable();
+        DataTable citas = new DataTable();
 
         public static int idActual = 0;
 
@@ -70,6 +71,14 @@ namespace Veterinario2020
             pictureBoxMascota.Image = convierteBlobImagenes((byte[])mascota.Rows[0]["foto"]);
         }
 
+        public void infoCitas(int id)
+        {
+            citas = conexion.buscaCitasPorId(id);
+            nombreCita.Text = "Tipo : " + citas.Rows[0]["Tipo"].ToString();
+            fechaCita.Text = "Fecha : " + citas.Rows[0]["fecha_cita"].ToString();
+            
+        }
+
         private void retrocesoBoton_Click(object sender, EventArgs e)
         {
             idActual--;
@@ -86,7 +95,57 @@ namespace Veterinario2020
 
         private void revisionCita_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(conexion.insertaFecha(fechaRevision.Value));
+            MessageBox.Show(conexion.insertaFecha("Revisión", fechaRevision.Value));
+        }
+
+        private void peluqueriaCita_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(conexion.insertaFecha("Peluquería", fechaRevision.Value));
+        }
+
+        private void citaVacunas_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(conexion.insertaFecha("Vacunas", fechaRevision.Value));
+        }
+
+        private void spaCitas_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(conexion.insertaFecha("Spa", fechaRevision.Value));
+        }
+
+        private void siguienteCita_Click(object sender, EventArgs e)
+        {
+            idActual++;
+            if (idActual >= 100)
+            {
+                idActual = 2;
+                siguienteCita.Hide();
+                previoCita.Show();
+            }
+
+            infoCitas(idActual);
+        }
+
+        private void previoCita_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                idActual--;
+                if (idActual <= 1)
+                {
+                    idActual = 1;
+                    previoCita.Hide();
+                    siguienteCita.Show();
+                }
+
+
+                infoCitas(idActual);
+            }
+            catch 
+            {
+            
+            }
+            
         }
     }
 }

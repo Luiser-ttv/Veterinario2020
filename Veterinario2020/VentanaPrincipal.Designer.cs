@@ -37,7 +37,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.calendarioCitas = new System.Windows.Forms.MonthCalendar();
             this.peluqueriaCita = new System.Windows.Forms.Button();
             this.citaVacunas = new System.Windows.Forms.Button();
             this.spaCitas = new System.Windows.Forms.Button();
@@ -60,6 +59,11 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.previoCita = new System.Windows.Forms.Button();
+            this.siguienteCita = new System.Windows.Forms.Button();
+            this.nombreCita = new System.Windows.Forms.Label();
+            this.fechaCita = new System.Windows.Forms.Label();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -125,7 +129,11 @@
             // 
             this.tabPage3.BackgroundImage = global::Veterinario2020.Properties.Resources.login1;
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tabPage3.Controls.Add(this.calendarioCitas);
+            this.tabPage3.Controls.Add(this.monthCalendar1);
+            this.tabPage3.Controls.Add(this.fechaCita);
+            this.tabPage3.Controls.Add(this.nombreCita);
+            this.tabPage3.Controls.Add(this.siguienteCita);
+            this.tabPage3.Controls.Add(this.previoCita);
             this.tabPage3.ImageIndex = 3;
             this.tabPage3.Location = new System.Drawing.Point(4, 39);
             this.tabPage3.Name = "tabPage3";
@@ -168,14 +176,6 @@
             this.imageList1.Images.SetKeyName(3, "icons8_calendar.ico");
             this.imageList1.Images.SetKeyName(4, "icons8_schedule_1.ico");
             // 
-            // calendarioCitas
-            // 
-            this.calendarioCitas.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.calendarioCitas.CalendarDimensions = new System.Drawing.Size(4, 2);
-            this.calendarioCitas.Location = new System.Drawing.Point(3, 36);
-            this.calendarioCitas.Name = "calendarioCitas";
-            this.calendarioCitas.TabIndex = 0;
-            // 
             // peluqueriaCita
             // 
             this.peluqueriaCita.BackColor = System.Drawing.Color.Black;
@@ -186,6 +186,7 @@
             this.peluqueriaCita.TabIndex = 1;
             this.peluqueriaCita.Text = "Peluquería";
             this.peluqueriaCita.UseVisualStyleBackColor = false;
+            this.peluqueriaCita.Click += new System.EventHandler(this.peluqueriaCita_Click);
             // 
             // citaVacunas
             // 
@@ -197,6 +198,7 @@
             this.citaVacunas.TabIndex = 2;
             this.citaVacunas.Text = "Vacunas";
             this.citaVacunas.UseVisualStyleBackColor = false;
+            this.citaVacunas.Click += new System.EventHandler(this.citaVacunas_Click);
             // 
             // spaCitas
             // 
@@ -208,6 +210,7 @@
             this.spaCitas.TabIndex = 3;
             this.spaCitas.Text = "Spa";
             this.spaCitas.UseVisualStyleBackColor = false;
+            this.spaCitas.Click += new System.EventHandler(this.spaCitas_Click);
             // 
             // fechaRevision
             // 
@@ -409,6 +412,56 @@
             this.label1.Text = "Si deseas añadir una nueva mascota por favor presentate en uno de nuestros centro" +
     "s más cercanos y encantados le haremos un chequeo y los datos pertinentes :)";
             // 
+            // previoCita
+            // 
+            this.previoCita.BackColor = System.Drawing.Color.Black;
+            this.previoCita.ForeColor = System.Drawing.SystemColors.Control;
+            this.previoCita.Location = new System.Drawing.Point(266, 187);
+            this.previoCita.Name = "previoCita";
+            this.previoCita.Size = new System.Drawing.Size(75, 23);
+            this.previoCita.TabIndex = 0;
+            this.previoCita.Text = "Anterior";
+            this.previoCita.UseVisualStyleBackColor = false;
+            this.previoCita.Click += new System.EventHandler(this.previoCita_Click);
+            // 
+            // siguienteCita
+            // 
+            this.siguienteCita.BackColor = System.Drawing.Color.Black;
+            this.siguienteCita.ForeColor = System.Drawing.SystemColors.Control;
+            this.siguienteCita.Location = new System.Drawing.Point(409, 187);
+            this.siguienteCita.Name = "siguienteCita";
+            this.siguienteCita.Size = new System.Drawing.Size(75, 23);
+            this.siguienteCita.TabIndex = 1;
+            this.siguienteCita.Text = "Siguiente";
+            this.siguienteCita.UseVisualStyleBackColor = false;
+            this.siguienteCita.Click += new System.EventHandler(this.siguienteCita_Click);
+            // 
+            // nombreCita
+            // 
+            this.nombreCita.AutoSize = true;
+            this.nombreCita.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombreCita.ForeColor = System.Drawing.SystemColors.Control;
+            this.nombreCita.Location = new System.Drawing.Point(275, 73);
+            this.nombreCita.Name = "nombreCita";
+            this.nombreCita.Size = new System.Drawing.Size(0, 15);
+            this.nombreCita.TabIndex = 2;
+            // 
+            // fechaCita
+            // 
+            this.fechaCita.AutoSize = true;
+            this.fechaCita.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fechaCita.ForeColor = System.Drawing.SystemColors.Control;
+            this.fechaCita.Location = new System.Drawing.Point(275, 132);
+            this.fechaCita.Name = "fechaCita";
+            this.fechaCita.Size = new System.Drawing.Size(0, 15);
+            this.fechaCita.TabIndex = 3;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(588, 12);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 4;
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -423,6 +476,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -453,7 +507,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button retrocesoBoton;
-        private System.Windows.Forms.MonthCalendar calendarioCitas;
         private System.Windows.Forms.PictureBox pictureBoxSpa;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -467,6 +520,11 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label fechaCita;
+        private System.Windows.Forms.Label nombreCita;
+        private System.Windows.Forms.Button siguienteCita;
+        private System.Windows.Forms.Button previoCita;
     }
 }
 

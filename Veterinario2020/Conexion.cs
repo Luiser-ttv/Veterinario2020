@@ -66,7 +66,24 @@ namespace Veterinario2020
             }
         }
 
-        
+        public DataTable buscaCitasPorId(int id)
+        {
+            try
+            {
+                conexion.Open();
+                MySqlCommand consulta = new MySqlCommand("SELECT * FROM citas where id = '" + id + "'", conexion);
+                MySqlDataReader resultado = consulta.ExecuteReader();
+                DataTable citas = new DataTable();
+                citas.Load(resultado);
+                conexion.Close();
+                return citas;
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
+        }
+
 
         public String insertaUsuario(String DNI, String Nombre, String pass)
         {
@@ -118,15 +135,16 @@ namespace Veterinario2020
             }
         }
 
-        public String insertaFecha(DateTime fecha_cita)
+        public String insertaFecha(String Tipo, DateTime fecha_cita)
         {
             try
             {
                 conexion.Open();
                 MySqlCommand consulta =
-                    new MySqlCommand("INSERT INTO citas (id, fecha_cita) VALUES (NULL, @fecha_cita)", conexion);
+                    new MySqlCommand("INSERT INTO citas (id, Tipo, fecha_cita) VALUES (NULL, @Tipo,@fecha_cita)", conexion);
+                consulta.Parameters.AddWithValue("@Tipo", Tipo);
                 consulta.Parameters.AddWithValue("@fecha_cita", fecha_cita);
-               
+
 
                 consulta.ExecuteNonQuery();
 
