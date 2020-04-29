@@ -40,38 +40,49 @@
             // 
             // insertaUsuario
             // 
+            this.insertaUsuario.BackColor = System.Drawing.SystemColors.ControlText;
+            this.insertaUsuario.ForeColor = System.Drawing.SystemColors.Control;
             this.insertaUsuario.Location = new System.Drawing.Point(171, 178);
             this.insertaUsuario.Name = "insertaUsuario";
             this.insertaUsuario.Size = new System.Drawing.Size(100, 31);
             this.insertaUsuario.TabIndex = 0;
             this.insertaUsuario.Text = "Crear";
-            this.insertaUsuario.UseVisualStyleBackColor = true;
+            this.insertaUsuario.UseVisualStyleBackColor = false;
             this.insertaUsuario.Click += new System.EventHandler(this.insertaUsuario_Click);
             // 
             // DNI
             // 
             this.DNI.AutoSize = true;
+            this.DNI.BackColor = System.Drawing.Color.Transparent;
+            this.DNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DNI.ForeColor = System.Drawing.SystemColors.Control;
             this.DNI.Location = new System.Drawing.Point(104, 51);
             this.DNI.Name = "DNI";
-            this.DNI.Size = new System.Drawing.Size(26, 13);
+            this.DNI.Size = new System.Drawing.Size(29, 13);
             this.DNI.TabIndex = 1;
             this.DNI.Text = "DNI";
             // 
             // Nombre
             // 
             this.Nombre.AutoSize = true;
+            this.Nombre.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Nombre.ForeColor = System.Drawing.SystemColors.Control;
             this.Nombre.Location = new System.Drawing.Point(101, 81);
             this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(44, 13);
+            this.Nombre.Size = new System.Drawing.Size(50, 13);
             this.Nombre.TabIndex = 2;
             this.Nombre.Text = "Nombre";
             // 
             // Pass
             // 
             this.Pass.AutoSize = true;
+            this.Pass.BackColor = System.Drawing.Color.Transparent;
+            this.Pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pass.ForeColor = System.Drawing.SystemColors.Control;
             this.Pass.Location = new System.Drawing.Point(104, 110);
             this.Pass.Name = "Pass";
-            this.Pass.Size = new System.Drawing.Size(61, 13);
+            this.Pass.Size = new System.Drawing.Size(71, 13);
             this.Pass.TabIndex = 3;
             this.Pass.Text = "Contraseña";
             // 
@@ -100,6 +111,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Veterinario2020.Properties.Resources.login1;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(404, 450);
             this.Controls.Add(this.textBoxPass);
             this.Controls.Add(this.textBoxNombre);
