@@ -108,7 +108,31 @@ namespace Veterinario2020
             }
         }
 
-       
+        public String insertaMascota(String nombre, String edad, String dueno, String vacunado)
+        {
+            try
+            {
+                conexion.Open();
+                MySqlCommand consulta =
+                    new MySqlCommand("INSERT INTO mascota (id, nombre, edad, dueno, vacunado) VALUES (NULL, @nombre, @edad, @dueno, @vacunado)", conexion);
+                consulta.Parameters.AddWithValue("@nombre", nombre);
+                consulta.Parameters.AddWithValue("@edad", edad);
+                consulta.Parameters.AddWithValue("@dueno", dueno);
+                consulta.Parameters.AddWithValue("@vacunado", vacunado);
+
+                consulta.ExecuteNonQuery();
+
+                conexion.Close();
+                return "Mascota añadida correctamente";
+
+            }
+            catch (MySqlException e)
+            {
+                return "error";
+            }
+        }
+
+
         public String insertaDatosUsuario(String Nombre, String Apellidos, String CP, String Calle, String Ciudad, String Provincia)
         {
             try

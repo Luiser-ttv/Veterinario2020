@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Veterinario2020
 {
@@ -38,15 +39,22 @@ namespace Veterinario2020
 
         private void muestraMascota_Click(object sender, EventArgs e)
         {
-            idActual++;
-            if (idActual >= 2)
+            try
             {
-                idActual = 2;
-                muestraMascota.Hide();
-                retrocesoBoton.Show();
+                idActual++;
+                if (idActual >= 100)
+                {
+                    idActual = 2;
+
+                }
+
+                infoMascota(idActual);
+            }
+            catch
+            {
+                errorMascotas.Text = ("No hay más mascotas pendientes");
             }
             
-            infoMascota(idActual);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -81,16 +89,21 @@ namespace Veterinario2020
 
         private void retrocesoBoton_Click(object sender, EventArgs e)
         {
-            idActual--;
-            if (idActual <= 1)
+            try
             {
-                idActual = 1;
-                retrocesoBoton.Hide();
-                muestraMascota.Show();
+                if (idActual <= 0)
+                {
+                    idActual = 1;
+                    
+                }
+
+                infoMascota(idActual);
+            }
+            catch
+            {
+                errorMascotas.Text = ("No hay más mascotas pendientes");
             }
             
-
-            infoMascota(idActual);
         }
 
         private void revisionCita_Click(object sender, EventArgs e)
@@ -115,15 +128,24 @@ namespace Veterinario2020
 
         private void siguienteCita_Click(object sender, EventArgs e)
         {
-            idActual++;
-            if (idActual >= 100)
-            {
-                idActual = 2;
-                siguienteCita.Hide();
-                previoCita.Show();
-            }
 
-            infoCitas(idActual);
+            try
+            {
+                idActual++;
+                if (idActual >= 100)
+                {
+                    idActual = 2;
+                    siguienteCita.Hide();
+                    previoCita.Show();
+                }
+
+                infoCitas(idActual);
+            }
+            catch 
+            {
+                errorCitas.Text = ("No hay más citas pendientes");
+            }
+           
         }
 
         private void previoCita_Click(object sender, EventArgs e)
@@ -143,9 +165,17 @@ namespace Veterinario2020
             }
             catch 
             {
-            
+                errorCitas.Text = ("No hay más citas pendientes");
             }
+           
             
+            
+        }
+
+        private void nuevoMascota_Click(object sender, EventArgs e)
+        {
+            NuevaMascota m = new NuevaMascota(this);
+            m.Show();
         }
     }
 }
