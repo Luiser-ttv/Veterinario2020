@@ -108,7 +108,7 @@ namespace Veterinario2020
             }
         }
 
-        public String insertaMascota(String nombre, String edad, String dueno, String vacunado)
+        public String insertaMascota(String nombre, DateTime edad, String dueno, String vacunado)
         {
             try
             {

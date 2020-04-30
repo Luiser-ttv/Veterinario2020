@@ -52,7 +52,7 @@ namespace Veterinario2020
             }
             catch
             {
-                errorMascotas.Text = ("No hay más mascotas pendientes");
+                errorMascotas.Text = ("No hay más mascotas");
             }
             
         }
@@ -101,7 +101,7 @@ namespace Veterinario2020
             }
             catch
             {
-                errorMascotas.Text = ("No hay más mascotas pendientes");
+                errorMascotas.Text = ("No hay más mascotas");
             }
             
         }
