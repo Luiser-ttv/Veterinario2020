@@ -43,6 +43,7 @@
             // insertaMascota
             // 
             this.insertaMascota.BackColor = System.Drawing.SystemColors.ControlText;
+            this.insertaMascota.Cursor = System.Windows.Forms.Cursors.Hand;
             this.insertaMascota.ForeColor = System.Drawing.SystemColors.Control;
             this.insertaMascota.Location = new System.Drawing.Point(181, 197);
             this.insertaMascota.Name = "insertaMascota";
@@ -146,7 +147,7 @@
             this.Controls.Add(this.insertaMascota);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NuevaMascota";
-            this.Text = "Form1";
+            this.Text = "Nueva Mascota";
             this.ResumeLayout(false);
             this.PerformLayout();
 
